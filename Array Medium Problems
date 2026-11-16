@@ -1,0 +1,32 @@
+/* Duplicates in Limited Range Array
+Solved
+Difficulty: EasyAccuracy: 18.95%Submissions: 940K+Points: 2Average Time: 20m
+Given an array arr[] of size n, containing elements from the range 1 to n, and each element appears at most twice, return an array of all the integers that appears twice.
+
+Note: You can return the elements in any order but the driver code will print them in sorted order.
+
+Examples:
+
+Input: arr[] = [2, 3, 1, 2, 3]
+Output: [2, 3] 
+Explanation: 2 and 3 occur more than once in the given array.*/
+
+Code
+
+class Solution {
+    public ArrayList<Integer> findDuplicates(int[] arr) {
+       ArrayList<Integer> duplicateArray = new ArrayList<Integer>();
+       for(int i=0; i < arr.length; i++){
+           int value = Math.abs(arr[i]);
+           int index = value - 1;
+           if(arr[index] > 0){
+               arr[index] = - arr[index];
+           }else{
+               // Add the vaalue into the duplicate array and return the array. 
+               duplicateArray.add(value);
+           }
+       }
+       return duplicateArray;
+        
+    }
+}
