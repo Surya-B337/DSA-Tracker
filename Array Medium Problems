@@ -131,3 +131,46 @@ class Solution {
     }
     
 }
+
+/*Move all Negatives to End
+Solved
+Difficulty: EasyAccuracy: 56.24%Submissions: 264K+Points: 2
+Given an unsorted array arr[ ] having both negative and positive integers. Place all negative elements at the end of the array without changing the order of positive elements and negative elements.
+
+Note: Don't return any array, just in-place on the array.
+
+Examples:
+
+Input : arr[] = [1, -1, 3, 2, -7, -5, 11, 6 ]
+Output : [1, 3, 2, 11, 6, -1, -7, -5]
+Explanation: By doing operations we separated the integers without changing the order.*/
+
+class Solution {
+    public void segregateElements(int[] arr) {
+        
+        int[] tempArray = new int[arr.length];
+        int[] negativeArray = new int[arr.length];
+        int index = 0;
+        int posIndex = 0;
+        for(int i=0; i < arr.length; i++){
+            if(arr[i] < 0){
+                negativeArray[index] = arr[i];
+                index++;
+            }else{
+                // Fill up first positive numbers
+                tempArray[posIndex] = arr[i];
+                posIndex++;
+            }
+        }
+        //Finally filled up the negative numbers. 
+        for(int i=0; i < index;i++){
+            tempArray[posIndex] = negativeArray[i];
+            posIndex++;
+        }
+        //Transfer the Temp Array into original array. 
+        for(int i=0; i < tempArray.length; i++){
+            arr[i] = tempArray[i];
+        }
+        
+    }
+}
