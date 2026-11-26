@@ -292,4 +292,39 @@ class Solution {
         }
     }
 }
+/*
+Extract Integers from String
+Solved
+Difficulty: EasyAccuracy: 48.37%Submissions: 20K+Points: 2
+Given a string s consisting of lowercase letters, uppercase letters, digits, and special characters, extract all the integers present in the string and return them in the order they appear.
+
+If no integers are present in the string, return an empty array.*/
+
+import java.util.*;
+class Solution {
+    public List<String> extractInt(String s) {
+        // code here
+        ArrayList<String> result = new ArrayList<>();
+        StringBuilder nums = new StringBuilder();
+        for(char ch : s.toCharArray()){
+            if(Character.isDigit(ch)){
+                //If any digit found add it to num
+                nums.append(ch);
+            }else{
+                if(nums.length() > 0){
+                    //Nums are added to result and set the numLength to 0
+                    result.add(nums.toString());
+                    nums.setLength(0);
+                }
+            }
+        }
+        //Handle the last number
+        if(nums.length() > 0){
+            result.add(nums.toString());
+        }
+       
+        return result;
+    }
+}
+
 
